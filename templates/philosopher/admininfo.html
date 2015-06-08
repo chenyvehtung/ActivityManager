@@ -1,0 +1,123 @@
+{% extends "templates/philosopher/baseinfo.html" %}
+
+{% block subcontent %}
+<script type="text/javascript" src="/../../static/js/admininfo.js"></script>
+<div id="adminInfoPage">
+<h5>人员管理</h5>
+<div class="row">
+	<div class="col-md-12">
+		<h5 id="student">学生</h5>
+		<div class="student-list">
+			<table class="table table-hover">
+			{% for student in nstudents %}
+				<tr>
+					<td>
+						{{ student }}
+						<a href="/philosopher/accounts/info/{{ student.user.id }}">Edit..</a>
+					</td>
+				</tr>
+			{% endfor %}
+			</table>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h5 id="black-student">被拉黑学生</h5>
+		<div class="black-student-list">
+		<table class="table table-hover ">
+		{% for student in bstudents %}
+			<tr>
+				<td>
+					{{ student }}
+					<a href="/philosopher/accounts/info/{{ student.user.id }}">Edit..</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h5 id="cor">组织者</h5>
+		<div class="cor-list">
+		<table class="table table-hover ">
+		{% for organizer in norganizers %}
+			<tr>
+				<td>
+					{{ organizer }}
+					<a href="/philosopher/accounts/info/{{ organizer.user.id }}">Edit..</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<h5 id="black-cor">被拉黑组织者</h5>
+		<div class="black-cor-list">
+		<table class="table table-hover">
+		{% for organizer in borganizers %}
+			<tr>
+				<td>
+					{{ organizer }}
+					<a href="/philosopher/accounts/info/{{ organizer.user.id }}">Edit..</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h5 id="wait-cor">等待通过组织者</h5>
+		<div class="wait-cor-list">
+		<table class="table table-hover">
+		{% for organizer in worganizers %}
+			<div>
+			<tr>
+				<td>
+					{{ organizer }}
+					<a href="/philosopher/accounts/info/{{ organizer.user.id }}">Edit..</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h5 id="all-admin">所有管理员</h5>
+		<div class="all-admin-list">
+		<table class="table table-hover">
+		{% for administrator in nadmins%}
+			<tr>
+				<td>
+					{{ administrator }}
+					<a href="/philosopher/accounts/info/{{ administrator.user.id }}">Edit..</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h5 id="all-activity">所有公益活动</h5>
+		<div class="all-activity-list">
+		<table class="table table-hover">
+		{% for activity in activities%}
+			<tr>
+				<td>
+					{{ activity }}
+					<a href="/philosopher/activity/detail/{{ activity.id }}">Edit..</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock subcontent%}
+

@@ -1,0 +1,14 @@
+{% extends 'templates/philosopher/base.html' %}
+
+{% block content %}
+	<h1>编辑信息</h1>
+	<p>activity: <a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a></p>
+	<p>myid: {{ nowuser.id }}</p>
+	<p>myName: {{ nowuser.username }}</p>
+	<p>myschoolid: {{ nowuser.userprofile.schoolID }}</p>
+	<form method="POST" >
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" >Save</button>
+	</form>
+{% endblock content %}

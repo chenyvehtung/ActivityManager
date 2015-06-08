@@ -1,0 +1,59 @@
+{% extends "templates/philosopher/base.html" %}
+
+<!--#0:pass; 1:reject; 2: wait; 3: finish; 4: failed-->
+{% block content %}
+<div>
+	{% if isOwner %}
+		<a href="/philosopher/application/delete/{{ application.id  }}">Delete</a>
+		<a href="/philosopher/application/edit/{{ application.id }}">编辑</a>
+	{% endif %}
+	{% if has_right %}
+		{% if application.apstatus == 2 %}
+		<a href="/philosopher/application/handle/1/{{ application.id }}">拒绝</a>
+		<a href="/philosopher/application/handle/2/{{ application.id }}">通过</a>
+		{% elif application.apstatus == 0 %}
+		<a href="/philosopher/application/handle/3/{{ application.id }}">完成</a>
+		<a href="/philosopher/application/handle/4/{{ application.id }}">未完成</a>
+		{% endif %}
+	{% endif %}
+</div>
+
+<div>
+	<h1>activityName: <a href="/philosopher/activity/detail/{{ activity.id }}">{{ application }}</a></h1>
+</div>
+<!--#0:pass; 1:reject; 2: wait; 3: finish; 4: failed-->
+<div>
+	<p>status: 
+	{% if application.apstatus == 0 %}
+	通过
+	{% elif application.apstatus == 1 %}
+	拒绝
+	{% elif application.apstatus == 2 %}
+	等待
+	{% elif application.apstatus == 3 %}
+	完成
+	{% else %}
+	未完成
+	{% endif %}
+	</p>
+</div>
+<div>
+	<p>studentID: {{ student.id }}</p>
+	<p>schoolID: {{ student.userprofile.schoolID }}</p>
+	<p>studentName: {{ student.username }}</p>
+	<p>grade: 
+	{% if application.grade == 'a' %}大一
+	{% elif application.grade == 'b' %}大二
+	{% elif application.grade == 'c' %}大三
+	{% elif application.grade == 'd' %}大四
+	{% elif application.grade == 'e' %}研究生
+	{% elif application.grade == 'f' %}博士生
+	{% else %}错误
+	{% endif %}
+	</p>
+	<p>phone: {{ application.phone }}</p>
+</div>
+<div>
+	<p>applyReason: {{ application.applyreason }}</p>
+</div>
+{% endblock %}

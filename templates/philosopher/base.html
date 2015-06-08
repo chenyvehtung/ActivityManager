@@ -1,0 +1,89 @@
+{% load url from future %}
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+	<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+	<link rel="shortcut icon" type="image/png" href="{% static 'image/logo.png'%}"/>
+
+	<title>Philosopher</title>
+</head>
+<body>
+
+	<div class="coverModel"></div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid" id="basePage">
+			<div class="navbar-header">
+				<div class="nav-brand">
+					<a href="/">
+					<img src="{% static 'image/logo.png'%}" >
+					<span class="title" >公益活动管理系统</span>
+					</a>
+				</div>
+				<div>
+					{% if user.is_authenticated %}
+						<div class="navbar-right login-info">
+						{% if isOrganizer or isAdmin %}
+							<a class="btn btn-primary" href="/philosopher/activity/add">添加活动</a>
+						{% endif %}
+						{% if isAdmin %}
+							<a class="btn btn-warning" href="/philosopher/activity/examlist">待审批</a>
+						{% endif %}
+							<span><a class="btn " href="/philosopher/accounts/info/{{ user.id }}">{{ user.username }}</a></span>
+							<span><a class="btn " href="/accounts/logout/">Logout</a></span>
+						</div>
+					{% else %}
+						<div class="navbar-right login-info">
+							<span> <a class="btn " href="/accounts/login/">登录</a></span>
+							<span><a class="btn " href="/philosopher/accounts/signup">注册</a></span>
+						</div>
+					{% endif %}
+				</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="blockContent">
+					{% block content %}
+					{% endblock content %}
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="rightContent">
+
+<div>
+	<form action="/philosopher/activity/search/" method="get">
+		<input type="text" name="q" size="24" value="" />
+		<input type="submit" value="搜索" />
+	</form>
+</div>
+
+					<div class="about_us">
+						<img src="{% static 'image/Mine.png'%}">
+						<p>搞活动？当然，请你做好不被付钱而被暴菊花的命运。总而言之，想要我的宝藏吗？那就来伟大航路吧！</p>
+						<div class="clear"></div>
+					</div>
+					<div class="rank">
+						<span class="title">当前最新的活动</span>
+						<hr>
+						<ul>
+						{% for activity in newTen %}
+						<li>
+							<a href="/philosopher/activity/detail/{{ activity.id }}" >{{ activity }}</a>
+						</li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+{% extends "templates/philosopher/base.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="/../../../static/js/activitydetail.js"></script>
+
+<div id="activityDetailPage">
+	<div>
+		<div class="left-board">
+			<table>
+			<tbody>
+			{% if activity.publishdate %}
+				<tr>
+					<p>审核通过时间:</p>
+				</tr>
+				<tr>
+					<p>{{ activity.publishdate }}</p>
+
+				</tr>
+			{% else %}
+				{% if isAdmin %}
+				<tr>
+					<td><a class="btn btn-success" href="/philosopher/activity/publish/{{ activity.id }}">通过</a></td>
+				</tr>
+				{% endif %}
+			{% endif %}
+			{% if has_right %}
+
+				<div class="inline-block">
+					<div><a class="btn btn-primary" id="openDialog">人员审核</a></div>
+					<div><a class="btn btn-primary" href="/philosopher/activity/edit/{{ activity.id }}">编辑</a></div>
+					<div><a class="btn btn-danger" href="/philosopher/activity/delete/{{ activity.id }}">Delete</a></div>
+				</div>
+
+			{% endif %}
+
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8 activityContent">
+			<h2 align="center">{{ activity.atname }}</h2>
+			<table class="table table-hover table-border">
+				<tbody>
+				<tr>
+					<td>发布者：</td>
+					<td> {{ activity.atorganizer  }}</td>
+				</tr>
+				<tr>
+
+					<td>活动介绍：</td>
+
+					<td>{{ activity.atcontent|linebreaks }}</td>
+				</tr>
+				<tr>
+					<td>限制人数：</td>
+					<td> {{ activity.numlimit }}</td>
+				</tr>
+				<tr>
+					<td>公益时长：</td>
+					<td>{{ activity.athours }}</td>
+				</tr>
+				<tr>
+					<td>开放申请时间:</td>
+					<td> {{ activity.applystart }}</td>
+				</tr>
+				<tr>
+					<td>结束申请时间: </td>
+					<td>{{ activity.applyend }}</td>
+				</tr>
+				<tr>
+					<td>活动开始时间: </td>
+					<td>{{ activity.doingstart }}</td>
+				</tr>
+				<tr>
+					<td>活动结束时间: </td>
+
+					<td>{{ activity.doingend  }}</td>
+				</tr>
+				<tr>
+					<td>反馈：</td><td> {{ activity.feedback }}</td>
+				</tr>
+				<tr>
+					<td>创建时间： </td><td>{{ activity.createdate }}</td>
+				</tr>
+				</tbody>
+			</table>
+			<img src="{{ activity.getPoster }}" alt = "{{ activity }}">
+		</div>
+	</div>
+	{% if activity.publishdate %}
+		{% if has_right %}
+
+		<div id="queneDialog" title="人员审核">
+			<div>
+				<p>等待队列</p>
+				{% for application in waitApplications %}
+				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
+				{% endfor %}
+			</div>
+			<div>
+				<p>通过队列</p>
+				{% for application in passApplications %}
+				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
+				{% endfor %}
+			</div>
+			<div>
+				<p>拒绝队列</p>
+				{% for application in rejectApplications %}
+				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
+				{% endfor %}
+			</div>
+			<div>
+				<p>完成队列</p>
+				{% for application in finishApplications %}
+				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
+				{% endfor %}
+			</div>
+			<div>
+				<p> 没完成队列</p>
+				{% for application in failApplications %}
+				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
+				{% endfor %}
+			</div>
+
+		</div>
+		{% endif %}
+		{% if user.is_authenticated %}
+			{% if isStudent %}
+				{% if isApplied %}
+				已申请: <a href="/philosopher/application/detail/{{ myApplicationId }}">我的申请</a>
+				{% else %}
+				<h2>可提交申请</h2>
+				<div>
+					<p>myid: {{ user.id }}</p>
+					<p>myName: {{ user.username }}</p>
+					<p>myschoolid: {{ user.userprofile.schoolID }}</p>
+				</div>
+				 <form action="/philosopher/application/apply/{{ activity.id }}/" method="POST" >
+				 	{% csrf_token %}
+				 	<div>
+				 	<div>
+				 	<label for="phone" >手机号码</label>
+				 	<input type="text" name="phone" value="{{ user.userprofile.phone }}" />
+				 	</div>
+					<div>
+					<label for="grade">年级</label>
+					<select name="grade">
+					<option value="a" >大一</option>
+					<option value="b" >大二</option>
+					<option value="c">大三</option>
+					<option value="d">大四</option>
+					<option value="e">研究生</option>
+					<option value="f">博士生</option>
+					</select>
+					</div>
+					<div>
+				 	<label for="applyreason" >申请原因</label>
+				 	<input type="text" name="applyreason" placeholder="请填入申请原因或其他补充信息" />
+				 	</div>
+				 	</div>
+				 	<input name="submit" type="submit" value="提交评论"/>
+				 </form>
+				 {% endif %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+</div>
+{% endblock content %}
+

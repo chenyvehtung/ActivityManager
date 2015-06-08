@@ -1,0 +1,152 @@
+.blockContent {
+  height: auto;
+  min-height: 100%;
+  padding: 20px; }
+
+.rightContent {
+  margin-top: 20px;
+  padding: 20px; }
+  .rightContent .about_us {
+    min-width: 200px; }
+    .rightContent .about_us img {
+      float: left;
+      width: 100px; }
+  .rightContent .rank {
+    margin-top: 70px; }
+    .rightContent .rank .title {
+      color: lightgrey;
+      font-size: 0.9em; }
+    .rightContent .rank ul {
+      list-style: none;
+      padding: 0; }
+      .rightContent .rank ul li {
+        margin-left: 10px;
+        margin-top: 10px;
+        border-bottom: 1px dotted #999; }
+
+body .navbar {
+  margin: 0px;
+  height: 200px;
+  top: 0px;
+  width: 100%;
+<<<<<<< HEAD
+  z-index: 100; }
+=======
+  z-index: 50; }
+>>>>>>> 509126af7a6355631ea7516f89d25ad7a71f3968
+
+.clear {
+  clear: both; }
+
+
+.coverModel {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99;
+  display: none; }
+
+.ui-dialog {
+  z-index: 1001; }
+
+
+#basePage img {
+  width: auto;
+  height: 129px; }
+#basePage .title {
+  color: black;
+  font-size: 3em;
+  position: relative;
+  top: 30px; }
+#basePage .navbar-header {
+  width: 100%;
+  padding-bottom: 10px;
+  position: relative;
+  left: 10px;
+  top: 30px; }
+#basePage a {
+  text-decoration: none; }
+#basePage .login-info {
+  position: absolute;
+  top: 10px;
+  right: 10px; }
+
+#homepagePage .activityContent {
+  margin-bottom: 20px; }
+
+#baseinfoPage .user-image img {
+  width: 100px;
+  height: auto; }
+#baseinfoPage #adminInfoPage td a {
+  float: right;
+  position: relative;
+  right: 30px; }
+
+#activityDetailPage .activityContent {
+  overflow-x: hidden; }
+  #activityDetailPage .activityContent img {
+    width: 100%; }
+
+.em06 {
+  font-size: 0.6em; }
+
+.center-btn {
+  position: relative;
+  left: 45%; }
+
+.activityContent {
+  border-radius: 5px;
+  background-color: #fff;
+  width: auto;
+  height: auto;
+  padding: 10px; }
+  .activityContent .title a {
+    color: #909db6;
+    text-decoration: none; }
+  .activityContent img {
+    width: 100%;
+    height: auto; }
+  .activityContent .left_column {
+    width: 50%;
+    float: left; }
+  .activityContent .right_column {
+    width: 40%;
+    margin-left: 5%;
+    float: left; }
+    .activityContent .right_column .descripe {
+      height: 100px;
+      overflow: hidden; }
+  .activityContent .readmore {
+    color: white;
+    background-color: #00BB33;
+    text-decoration: none; }
+
+
+@media screen {
+  .left-board {
+    border: 1px solid #c6e0ed;
+    border-radius: 20px;
+    background-color: #d2ebe5;
+    width: 10%;
+    position: fixed;
+    top: 30%;
+    left: 30px;
+    padding: 10px; }
+    .left-board .btn {
+      width: 80px;
+      margin: 10px 0; } }
+@media screen and (max-width: 1000px) {
+  .left-board {
+    border: 1px solid #c6e0ed;
+    border-radius: 20px;
+    background-color: #d2ebe5;
+    width: 100%;
+    position: relative;
+    left: 30px;
+    padding: 10px; }
+    .left-board .btn {
+      width: 80px;
+      margin: 10px 0; }
+    .left-board .inline-block > div {
+      display: inline-block; } }

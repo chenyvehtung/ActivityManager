@@ -1,0 +1,26 @@
+{% extends "templates/philosopher/base.html" %}
+
+{% block content %}
+<div id="homepagePage">
+		{% for activity in activities %}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="activityContent">
+				<h4 class="title">{{activity.atname}}</h4>
+				<div class="left_column">
+					<img src="/../static/image/milkyway6.jpg">
+				</div>
+				<div class="right_column">
+					<p class="em06">发起者： {{ activity.atorganizer.username }}</p>
+					<p class="descripe">简介：{{ activity.atcontent|truncatechars:40 }}</p>
+					<a href="/philosopher/activity/detail/{{ activity.id }}" class="readmore">Read More..</a>
+					<p><span id="date">{{ activity.applystart }}</span><span id="keyword">NA</span></p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+	<hr>
+		{% endfor %}
+</div>
+{% endblock content %}

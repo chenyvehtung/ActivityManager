@@ -1,0 +1,60 @@
+{% extends "templates/philosopher/baseinfo.html" %}
+
+{% block moreinfo %}
+	<p>phone: {{ nowuserprofile.phone }}</p>
+	<p>公益时: {{ nowuserprofile.attimes }}</p>
+	<p>schoolId: {{ nowuserprofile.schoolID }}</p>
+{% endblock moreinfo %}
+
+{% block subcontent %}
+<div>
+	<h1>I'm student</h1>
+	{% if isAdmin %}
+		{% if nowuser.is_active %}
+		<a href="/philosopher/accounts/toggleblack/{{ nowuser.id }}">拉黑</a>
+		{% else %}
+		<a href="/philosopher/accounts/toggleblack/{{ nowuser.id }}">解禁</a>
+		{% endif %}
+	{% endif %}
+</div>
+<div>
+	<p>正在申请: </p>
+	{% for application in applyApplication %}
+	<div>
+		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	</div>
+	{% endfor %}
+</div>
+<div>
+	<p>被拒申请:</p>
+	{% for application in rejectApplication %}
+	<div>
+		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	</div>
+	{% endfor %}
+</div>
+<div>
+	<p>进行中: </p>
+	{% for application in doingApplication %}
+	<div>
+		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	</div>
+	{% endfor %}
+</div>
+<div>
+	<p>已完成</p>
+	{% for application in finishApplication %}
+	<div>
+		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	</div>
+	{% endfor %}
+</div>
+<div>
+	<p>未完成</p>
+	{% for application in unfinishApplication %}
+	<div>
+		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	</div>
+	{% endfor %}
+</div>
+{% endblock subcontent %}
