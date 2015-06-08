@@ -3,4 +3,4 @@ dj-database-url==0.3.0
 gunicorn==19.3.0
 whitenoise==1.0.6
 psycopg2==2.5.4
-Pillow==1.7.7
+-e hg+https://bitbucket.org/etienned/pil-2009-raclette/#egg=PIL
