@@ -1,14 +1,15 @@
 {% extends "templates/philosopher/baseinfo.html" %}
 
 {% block moreinfo %}
-	<p>phone: {{ nowuserprofile.phone }}</p>
-	<p>公益时: {{ nowuserprofile.attimes }}</p>
-	<p>schoolId: {{ nowuserprofile.schoolID }}</p>
+	<tr><td>手机号码: </td><td>{{ nowuserprofile.phone }}</td></tr>
+	<tr><td>公益时: </td><td>{{ nowuserprofile.attimes }}</td></tr>
+	<tr><td>学号: </td><td>{{ nowuserprofile.schoolID }}</td></tr>
 {% endblock moreinfo %}
 
 {% block subcontent %}
-<div>
-	<h1>I'm student</h1>
+<script type="text/javascript" src="/../../static/js/studentInfo.js"></script>
+<div id="studentInfoPage">
+	<h4 align="center">学生，你好</h4>
 	{% if isAdmin %}
 		{% if nowuser.is_active %}
 		<a href="/philosopher/accounts/toggleblack/{{ nowuser.id }}">拉黑</a>
@@ -16,45 +17,100 @@
 		<a href="/philosopher/accounts/toggleblack/{{ nowuser.id }}">解禁</a>
 		{% endif %}
 	{% endif %}
-</div>
-<div>
-	<p>正在申请: </p>
-	{% for application in applyApplication %}
-	<div>
-		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	<div class="row">
+		<div class="col-md-12">
+			<h5 id="appling">
+				正在申请:（共{{applyApplication|length}}项）
+				<div class="hint_pic_down"></div>
+			</h5>
+			<div class="appling-list">
+				<table class="table table-hover">
+				{% for application in applyApplication %}
+					<tr>
+						<td>
+							<a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
-</div>
-<div>
-	<p>被拒申请:</p>
-	{% for application in rejectApplication %}
-	<div>
-		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	<div class="row">
+		<div class="col-md-12">
+			<h5 id="reject">
+				被拒申请:（共{{rejectApplication|length}}项）
+				<div class="hint_pic_down"></div>
+			</h5>
+			<div class="reject-list">
+				<table class="table table-hover">
+				{% for application in rejectApplication %}
+					<tr>
+						<td>
+							<a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
-</div>
-<div>
-	<p>进行中: </p>
-	{% for application in doingApplication %}
-	<div>
-		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	<div class="row">
+		<div class="col-md-12">
+			<h5 id="doing">
+				进行中:（共{{doingApplication|length}}项）
+				<div class="hint_pic_down"></div>
+			</h5>
+			<div class="doing-list">
+				<table class="table table-hover">
+				{% for application in doingApplication %}
+					<tr>
+						<td>
+							<a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
-</div>
-<div>
-	<p>已完成</p>
-	{% for application in finishApplication %}
-	<div>
-		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	<div class="row">
+		<div class="col-md-12">
+			<h5 id="finish">
+				已完成:（共{{finishApplication|length}}项）
+				<div class="hint_pic_down"></div>
+			</h5>
+			<div class="finish-list">
+				<table class="table table-hover">
+				{% for application in finishApplication %}
+					<tr>
+						<td>
+							<a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
-</div>
-<div>
-	<p>未完成</p>
-	{% for application in unfinishApplication %}
-	<div>
-		<p>{{ forloop.counter }} <a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a></p>
+	<div class="row">
+		<div class="col-md-12">
+			<h5 id="unfinish">
+				未完成:（共{{unfinishApplication|length}}项）
+				<div class="hint_pic_down"></div>
+			</h5>
+			<div class="unfinish-list">
+				<table class="table table-hover">
+				{% for application in unfinishApplication %}
+					<tr>
+						<td>
+							<a href="/philosopher/application/detail/{{ application.id }}">{{ application }}</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
 	</div>
-	{% endfor %}
 </div>
 {% endblock subcontent %}

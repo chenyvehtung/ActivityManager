@@ -38,7 +38,7 @@ urlpatterns = patterns('',
 
     url(r'^philosopher/activity/search/$', 'philosopher.views.activity.SearchActivity', name="SearchActivity"),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, }),
-    
+
 )
 
 
@@ -48,6 +48,6 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT,
         }),
         url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.STATIC_ROOT, 
+            'document_root': settings.STATIC_ROOT,
         }),
    )

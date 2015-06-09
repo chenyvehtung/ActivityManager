@@ -1,23 +1,37 @@
 {% extends "templates/philosopher/baseinfo.html" %}
 
 {% block subcontent %}
-<div>
-	<h1>I'm Organizer </h1>
-	{% if isAdmin %}
-		<a href="/philosopher/accounts/toggleblack/{{ nowuser.id }}">
-		{% if nowuser.is_active %}
-		拉黑	
-		{% elif nowuser.userprofile.status == 'w' %}
-		批准
-		{% else %}
-		解禁
-		{% endif %}</a>
-	{% endif %}
-</div>
-<div>
-	<p>我创建的活动</p>
-	{% for activity in activities %}
-	<p>{{ forloop.counter }} <a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a></p>
-	{% endfor %}
+<script type="text/javascript" src="/../../static/js/organinfo.js"></script>
+<div id="OrganInfoPage">
+	<h4 align="center">组织者</h4>
+		{% if isAdmin %}
+			<a href="/philosopher/accounts/toggleblack/{{ nowuser.id }}">
+			{% if nowuser.is_active %}
+			拉黑
+			{% elif nowuser.userprofile.status == 'w' %}
+			批准
+			{% else %}
+			解禁
+			{% endif %}</a>
+		{% endif %}
+	<div class="row">
+		<div class="col-md-12">
+			<h5 id="mycreate">
+				我创建的活动（共{{activities|length}}项）
+				<div class="hint_pic_down"></div>
+			</h5>
+			<div class="mycreate-list">
+				<table class="table table-hover">
+				{% for activity in activities %}
+					<tr>
+						<td>
+							<a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a>
+						</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock subcontent %}

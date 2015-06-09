@@ -3,6 +3,9 @@
   min-height: 100%;
   padding: 20px; }
 
+a, a:hover {
+  text-decoration: none !important; }
+
 .rightContent {
   margin-top: 20px;
   padding: 20px; }
@@ -24,20 +27,24 @@
         margin-top: 10px;
         border-bottom: 1px dotted #999; }
 
+label.error {
+  color: red;
+  width: 100%;
+  text-align: center;
+  border: 1px solid lightgrey; }
+
+textarea.error, input.error {
+  border: 2px solid red; }
+
 body .navbar {
   margin: 0px;
-  height: 200px;
+  height: 90px;
   top: 0px;
   width: 100%;
-<<<<<<< HEAD
-  z-index: 100; }
-=======
   z-index: 50; }
->>>>>>> 509126af7a6355631ea7516f89d25ad7a71f3968
 
 .clear {
   clear: both; }
-
 
 .coverModel {
   background-color: rgba(0, 0, 0, 0.5);
@@ -50,21 +57,26 @@ body .navbar {
 .ui-dialog {
   z-index: 1001; }
 
-
 #basePage img {
   width: auto;
-  height: 129px; }
+  height: 60px; }
 #basePage .title {
   color: black;
-  font-size: 3em;
+  font-size: 2.5em;
   position: relative;
-  top: 30px; }
+  top: 10px; }
 #basePage .navbar-header {
   width: 100%;
   padding-bottom: 10px;
   position: relative;
   left: 10px;
-  top: 30px; }
+  top: 10px; }
+  #basePage #user-avatar{
+        border-radius: 100%;
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+      }
 #basePage a {
   text-decoration: none; }
 #basePage .login-info {
@@ -75,8 +87,24 @@ body .navbar {
 #homepagePage .activityContent {
   margin-bottom: 20px; }
 
+#adminInfoPage .row .col-md-12 {
+  border-bottom: 1px dotted grey; }
+
+#baseinfoPage h5 .hint_pic_down {
+  float: right;
+  background-image: url(../image/carat-d-black.png);
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px; }
+#baseinfoPage h5 .hint_pic_up {
+  float: right;
+  background-image: url(../image/carat-u-black.png);
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px; }
 #baseinfoPage .user-image img {
-  width: 100px;
+  margin-bottom: 15px;
+  width: 109px;
   height: auto; }
 #baseinfoPage #adminInfoPage td a {
   float: right;
@@ -121,7 +149,6 @@ body .navbar {
     color: white;
     background-color: #00BB33;
     text-decoration: none; }
-
 
 @media screen {
   .left-board {

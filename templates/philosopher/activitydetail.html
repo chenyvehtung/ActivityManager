@@ -1,9 +1,7 @@
 {% extends "templates/philosopher/base.html" %}
 
 {% block content %}
-
 <script type="text/javascript" src="/../../../static/js/activitydetail.js"></script>
-
 <div id="activityDetailPage">
 	<div>
 		<div class="left-board">
@@ -15,7 +13,6 @@
 				</tr>
 				<tr>
 					<p>{{ activity.publishdate }}</p>
-
 				</tr>
 			{% else %}
 				{% if isAdmin %}
@@ -24,15 +21,16 @@
 				</tr>
 				{% endif %}
 			{% endif %}
-			{% if has_right %}
-
 				<div class="inline-block">
-					<div><a class="btn btn-primary" id="openDialog">人员审核</a></div>
-					<div><a class="btn btn-primary" href="/philosopher/activity/edit/{{ activity.id }}">编辑</a></div>
-					<div><a class="btn btn-danger" href="/philosopher/activity/delete/{{ activity.id }}">Delete</a></div>
-				</div>
 
-			{% endif %}
+					{% if has_right %}
+						<div><a class="btn btn-primary" id="openDialog">人员审核</a></div>
+						<div><a class="btn btn-primary" href="/philosopher/activity/edit/{{ activity.id }}">编辑</a></div>
+						<div><a class="btn btn-danger" href="/philosopher/activity/delete/{{ activity.id }}">Delete</a></div>
+					{% else %}
+						<div><a class="btn btn-primary" id="openDialog">申请加入</a></div>
+					{% endif %}
+				</div>
 
 			</table>
 		</div>
@@ -47,9 +45,7 @@
 					<td> {{ activity.atorganizer  }}</td>
 				</tr>
 				<tr>
-
-					<td>活动介绍：</td>
-
+					<td>活动名称：</td>
 					<td>{{ activity.atcontent|linebreaks }}</td>
 				</tr>
 				<tr>
@@ -61,11 +57,11 @@
 					<td>{{ activity.athours }}</td>
 				</tr>
 				<tr>
-					<td>开放申请时间:</td>
+					<td>申请开始时间:</td>
 					<td> {{ activity.applystart }}</td>
 				</tr>
 				<tr>
-					<td>结束申请时间: </td>
+					<td>申请结束时间: </td>
 					<td>{{ activity.applyend }}</td>
 				</tr>
 				<tr>
@@ -73,12 +69,11 @@
 					<td>{{ activity.doingstart }}</td>
 				</tr>
 				<tr>
-					<td>活动结束时间: </td>
-
+					<td>活动结束时间 : </td>
 					<td>{{ activity.doingend  }}</td>
 				</tr>
 				<tr>
-					<td>反馈：</td><td> {{ activity.feedback }}</td>
+					<td>备注：</td><td> {{ activity.feedback }}</td>
 				</tr>
 				<tr>
 					<td>创建时间： </td><td>{{ activity.createdate }}</td>
@@ -88,10 +83,9 @@
 			<img src="{{ activity.getPoster }}" alt = "{{ activity }}">
 		</div>
 	</div>
+	<div id="queneDialog" title="人员审核">
 	{% if activity.publishdate %}
 		{% if has_right %}
-
-		<div id="queneDialog" title="人员审核">
 			<div>
 				<p>等待队列</p>
 				{% for application in waitApplications %}
@@ -122,30 +116,40 @@
 				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
 				{% endfor %}
 			</div>
-
-		</div>
 		{% endif %}
 		{% if user.is_authenticated %}
 			{% if isStudent %}
 				{% if isApplied %}
 				已申请: <a href="/philosopher/application/detail/{{ myApplicationId }}">我的申请</a>
 				{% else %}
-				<h2>可提交申请</h2>
+				<h2 align="center">可提交申请</h2>
 				<div>
-					<p>myid: {{ user.id }}</p>
-					<p>myName: {{ user.username }}</p>
-					<p>myschoolid: {{ user.userprofile.schoolID }}</p>
+					<table>
+						<tr>
+							<td width="100">用户ID</td>
+							<td>{{ user.id }}</td>
+						</tr>
+						<tr>
+							<td>用户姓名</td>
+							<td>{{ user.username }}</td>
+						</tr>
+						<tr>
+							<td>学号</td>
+							<td>{{ user.userprofile.schoolID }}</td>
+						</tr>
+					</table>
 				</div>
+				<hr>
 				 <form action="/philosopher/application/apply/{{ activity.id }}/" method="POST" >
 				 	{% csrf_token %}
 				 	<div>
 				 	<div>
 				 	<label for="phone" >手机号码</label>
-				 	<input type="text" name="phone" value="{{ user.userprofile.phone }}" />
+				 	<input type="text" name="phone" value="{{ user.userprofile.phone }}" class="form-control" />
 				 	</div>
 					<div>
 					<label for="grade">年级</label>
-					<select name="grade">
+					<select name="grade" class="form-control">
 					<option value="a" >大一</option>
 					<option value="b" >大二</option>
 					<option value="c">大三</option>
@@ -156,15 +160,20 @@
 					</div>
 					<div>
 				 	<label for="applyreason" >申请原因</label>
-				 	<input type="text" name="applyreason" placeholder="请填入申请原因或其他补充信息" />
+				 	<input type="text" name="applyreason" placeholder="请填入申请原因或其他补充信息" class="form-control"/>
 				 	</div>
 				 	</div>
-				 	<input name="submit" type="submit" value="提交评论"/>
+				 	<input name="submit" type="submit" value="提交评论" class="form-control"/>
 				 </form>
 				 {% endif %}
+			{% else %}
+				<p>对不起，你不是学生，无法参加</p>
 			{% endif %}
 		{% endif %}
+
 	{% endif %}
+	</div>
+
 </div>
 {% endblock content %}
 
