@@ -1,0 +1,65 @@
+$(function(){
+	$("#id_doingstart").datepicker();
+	$("#id_doingend").datepicker();
+	$("#id_applystart").datepicker();
+	$("#id_applyend").datepicker();
+
+	//给所有Input标签都加上form-control类
+	$("input").addClass("form-control");
+	$("textarea").addClass("form-control");
+
+	//给表单添加验证功能
+	$("#activityEditForm").validate({
+		rules:{
+			atname:{
+				required:true
+			},
+			atcontent:{
+				required:true
+			},
+			numlimit:{
+				required:true,
+				number:true
+			},
+			athours:{
+				required:true,
+				number:true
+			},
+			doingstart:{
+				required:true
+			},
+			doingstart:{
+				required:true
+			},
+			feedback:{
+				required:true
+			}
+		},
+		messages:{
+			atname:{
+				required:"请填写你的活动名称"
+			},
+			atcontent:{
+				required:"请填写活动内容简介"
+			},
+			numlimit:{
+				required:"请填写人数限制",
+				number:"请输入数字"
+			},
+			athours:{
+				required:"请填写公益时长信息",
+				number:"请输入数字"
+			},
+			doingstart:{
+				required:"请选择活动开始日期"
+			},
+			doingend:{
+				required:"请选择活动结束日期"
+			},
+			feedback:{
+				required:"请添加反馈"
+			}
+
+		}
+	});
+});

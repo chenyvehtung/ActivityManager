@@ -1,12 +1,27 @@
 {% extends 'templates/philosopher/base.html' %}
 
 {% block content %}
-	<h1>编辑信息</h1>
-	<p>activity: <a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a></p>
-	<p>myid: {{ nowuser.id }}</p>
-	<p>myName: {{ nowuser.username }}</p>
-	<p>myschoolid: {{ nowuser.userprofile.schoolID }}</p>
-	<form method="POST" >
+<script type="text/javascript" src="/../../../static/js/appEdit.js"></script>
+<script type="text/javascript" src="/../../../static/js/jquery.validate.min.js"></script>
+
+	<h1 align="center">编辑信息</h1>
+	<table class="table table-hover table-border" >
+	<tbody>
+	<tr>
+		<td>活动:</td>
+		<td> <a href="/philosopher/activity/detail/{{ activity.id }}">{{ activity }}</a></td>
+		</tr>
+	<tr>
+	<td>我的ID:</td><td> {{ nowuser.id }}</td></tr>
+	<tr>
+	<td>我的账号: </td><td>{{ nowuser.username }}</td>
+	</tr>
+	<tr>
+	<td>我的学生ID: </td><td>{{ nowuser.userprofile.schoolID }}</td>
+	</tr>
+	</tbody>
+	</table>
+	<form method="POST" id="activityEditForm">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<button type="submit" >Save</button>
