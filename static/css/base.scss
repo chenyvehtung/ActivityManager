@@ -4,6 +4,10 @@
 	padding:20px;
 }
 
+a,a:hover{
+	text-decoration:none !important;
+}
+
 .rightContent{
 	margin-top:20px;
 	padding:20px;
@@ -32,22 +36,26 @@
 	}
 }
 
+label.error{
+	color:red;
+	width:100%;
+	text-align:center;
+	border:1px solid lightgrey;
+}
+textarea.error,input.error{
+	border:2px solid red;
+}
+
 body .navbar{
 	margin:0px;
-	height:200px;
+	height:90px;
 	top:0px;
 	width:100%;
-<<<<<<< HEAD
-	z-index:100;
-=======
 	z-index:50;
->>>>>>> 509126af7a6355631ea7516f89d25ad7a71f3968
 }
 .clear{
 	clear:both;
 }
-<<<<<<< HEAD
-=======
 .coverModel{
 	background-color:rgba(0,0,0,0.5);
 	width:100%;
@@ -60,25 +68,26 @@ body .navbar{
 .ui-dialog{
 	z-index:1001;
 }
->>>>>>> 509126af7a6355631ea7516f89d25ad7a71f3968
+
+
 //basePage
 #basePage{
 		img{
 			width: auto;
-			height: 129px;
+			height: 60px;
 		}
 		.title{
 			color: black;
-			font-size: 3em;
+			font-size: 2.5em;
 			position: relative;
-			top:30px;
+			top:10px;
 		}
 		.navbar-header{
 			width: 100%;
 			padding-bottom: 10px;
 			position:relative;
 			left:10px;
-			top:30px;
+			top:10px;
 		}
 		a{
 			text-decoration: none;
@@ -102,10 +111,33 @@ body .navbar{
 
 }
 
+//adminInfoPage
+#adminInfoPage{
+
+	.row .col-md-12{
+		border-bottom:1px dotted grey;
+	}
+}
+
 //baseInfoPage
 #baseinfoPage{
+	h5 .hint_pic_down{
+		float:right;
+		background-image: url(../image/carat-d-black.png);
+		background-repeat: no-repeat;
+		width: 25px;
+		height: 25px;
+	}
+	h5 .hint_pic_up{
+		float:right;
+		background-image: url(../image/carat-u-black.png);
+		background-repeat: no-repeat;
+		width: 25px;
+		height: 25px;
+	}
 	.user-image{
 		img{
+			margin-bottom: 15px;
 			width: 100px;
 			height: auto;
 		}
@@ -128,6 +160,11 @@ body .navbar{
 			width: 100%;
 		}
 	}
+}
+
+//activityEditPage
+#activityEditPage{
+	#id_applystart{}
 }
 //global
 .em06{
@@ -171,21 +208,6 @@ body .navbar{
 		text-decoration: none;
 	}
 }
-<<<<<<< HEAD
-.left-board{
-	border:1px solid rgb(198,224,237);
-	border-radius:20px;
-	background-color: rgb(210,235,229);
-	position:fixed;
-	top:50%;
-	left:30px;
-	padding:10px;
-	.btn{
-		width: 80px;
-		margin:10px 0;
-	}
-}
-=======
 @media screen{
 	.left-board{
 		border:1px solid rgb(198,224,237);
@@ -222,4 +244,3 @@ body .navbar{
 		}
 	}
 }
->>>>>>> 509126af7a6355631ea7516f89d25ad7a71f3968

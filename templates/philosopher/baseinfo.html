@@ -6,16 +6,16 @@
 		<div class="col-md-offset-1 col-md-8">
 			<table class="table table-hover">
 				<tr>
-				<td>userid:</td><td> {{ nowuser.id }}</td>
+				<td>ID号:</td><td> {{ nowuser.id }}</td>
 				</tr>
 				<tr>
-				<td>username:</td><td> {{ nowuser.username }}</td>
+				<td>用户账号:</td><td> {{ nowuser.username }}</td>
 				</tr>
 				<tr>
-				<td>email:</td><td> {{ nowuser.email }}</td>
+				<td>邮箱:</td><td> {{ nowuser.email }}</td>
 				</tr>
 				<tr>
-				<td>gender:</td><td>
+				<td>性别:</td><td>
 					{% if nowuserprofile.gender == 'f' %}女
 					{% elif nowuserprofile.gender == 'm' %}男
 					{% elif nowuserprofile.gender == 'o' %}其他
@@ -24,7 +24,7 @@
 				</td>
 				</tr>
 				<tr>
-				<td>status:</td><td>
+				<td>账号状态:</td><td>
 					{% if nowuserprofile.status == 'n' %}正常
 					{% elif nowuserprofile.status == 'b' %}被拉黑
 					{% elif nowuserprofile.status == 'w' %}待批准
@@ -33,7 +33,7 @@
 				</td>
 				</tr>
 				<tr>
-				<td>role:</td><td>
+				<td>角色:</td><td>
 					{% if nowuserprofile.role == 's' %}学生
 					{% elif nowuserprofile.role == 'o' %}组织者
 					{% elif nowuserprofile.role == 'a' %}管理员
@@ -41,16 +41,18 @@
 					{% endif %}
 				</td>
 				</tr>
+				{% block moreinfo %}
+				{% endblock moreinfo %}
 			</table>
 		</div>
 		<div class="user-image col-md-2">
-			{% if has_right %}
-				<a href="/philosopher/accounts/editinfo/{{ nowuser.id }}">Edit</a>
-			{% endif %}
 			<img src="{{ nowuserprofile.getAvatar }}" alt="{{ nowuser.username }}"/>
+			{% if has_right %}
+				<a href="/philosopher/accounts/editinfo/{{ nowuser.id }}" class="btn btn-primary">修改个人信息</a>
+			{% endif %}
+
+
 		</div>
-		{% block moreinfo %}
-		{% endblock moreinfo %}
 	</div>
 	<hr>
 	<div>

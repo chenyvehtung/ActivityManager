@@ -1,8 +1,10 @@
 {% extends "templates/philosopher/base.html"%}
 
 {% block content %}
+	<script type="text/javascript" src="/../../../static/js/userEdit.js"></script>
+	<script type="text/javascript" src="/../../../static/js/jquery.validate.min.js"></script>
 	<h1>编辑信息</h1>
-	<form enctype="multipart/form-data" method="POST" >
+	<form enctype="multipart/form-data" id="activityEditForm" method="POST" >
 		{% csrf_token %}
 		{{ userform.as_p }}
 		{{ userprofileform.as_p }}

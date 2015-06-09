@@ -1,0 +1,1 @@
+$(function(){$("input").addClass("form-control"),$("textarea").addClass("form-control"),$("button").addClass("form-control btn-primary"),$("#activityEditForm").validate({rules:{phone:{required:!0,number:!0}},messages:{phone:{number:"请输入数字"}}})});

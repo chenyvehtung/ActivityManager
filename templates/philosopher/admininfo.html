@@ -3,10 +3,13 @@
 {% block subcontent %}
 <script type="text/javascript" src="/../../static/js/admininfo.js"></script>
 <div id="adminInfoPage">
-<h5>人员管理</h5>
+<h4 align="center">人员管理</h4>
 <div class="row">
 	<div class="col-md-12">
-		<h5 id="student">学生</h5>
+		<h5 id="student">
+			学生（共{{nstudents|length}}人）
+			<div class="hint_pic_down"></div>
+		</h5>
 		<div class="student-list">
 			<table class="table table-hover">
 			{% for student in nstudents %}
@@ -21,7 +24,8 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<h5 id="black-student">被拉黑学生</h5>
+		<h5 id="black-student">被拉黑学生(共{{ bstudents|length }}人）<div class="hint_pic_down"></div>
+		</h5>
 		<div class="black-student-list">
 		<table class="table table-hover ">
 		{% for student in bstudents %}
@@ -39,7 +43,9 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<h5 id="cor">组织者</h5>
+		<h5 id="cor">组织者（共{{ norganizers|length }}人）
+		<div class="hint_pic_down"></div>
+		</h5>
 		<div class="cor-list">
 		<table class="table table-hover ">
 		{% for organizer in norganizers %}
@@ -55,7 +61,8 @@
 	</div>
 
 	<div class="col-md-12">
-		<h5 id="black-cor">被拉黑组织者</h5>
+		<h5 id="black-cor">被拉黑组织者（共{{ borganizers|length }}人）<div class="hint_pic_down"></div>
+		</h5>
 		<div class="black-cor-list">
 		<table class="table table-hover">
 		{% for organizer in borganizers %}
@@ -70,7 +77,8 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<h5 id="wait-cor">等待通过组织者</h5>
+		<h5 id="wait-cor">等待通过组织者（共{{ worganizers|length }}人）<div class="hint_pic_down"></div>
+		</h5>
 		<div class="wait-cor-list">
 		<table class="table table-hover">
 		{% for organizer in worganizers %}
@@ -88,7 +96,8 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<h5 id="all-admin">所有管理员</h5>
+		<h5 id="all-admin">所有管理员（共{{ nadmins|length }}人）<div class="hint_pic_down"></div>
+		</h5>
 		<div class="all-admin-list">
 		<table class="table table-hover">
 		{% for administrator in nadmins%}
@@ -103,7 +112,7 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<h5 id="all-activity">所有公益活动</h5>
+		<h5 id="all-activity">所有公益活动（共{{ activities|length }}人）<div class="hint_pic_down"></div></h5>
 		<div class="all-activity-list">
 		<table class="table table-hover">
 		{% for activity in activities%}
