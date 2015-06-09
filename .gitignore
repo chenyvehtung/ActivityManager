@@ -1,0 +1,15 @@
+*.pyc
+*~
+ActivityManager/settings.py
+
+.codekit-cache/
+config.codekit
+static/.DS_Store
+static/image/.DS_Store
+static/js/.DS_Store
+static/js/min/activitydetail-min.js
+static/css/.sass-cache/f48c2d4700dced1e7a21839ef48310c5bd5a28b5/base.scssc
+
+local_settings.py
+philosopher.db
+__pycache__
