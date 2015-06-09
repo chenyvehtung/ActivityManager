@@ -1,5 +1,9 @@
 *.pyc
+*/*.pyc
+*/*/*.pyc
 *~
+*/*~
+*/*/*~
 ActivityManager/settings.py
 
 .codekit-cache/
