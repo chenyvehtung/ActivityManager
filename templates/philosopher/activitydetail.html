@@ -12,7 +12,7 @@
 					<p>审核通过时间:</p>
 				</tr>
 				<tr>
-					<p>{{ activity.publishdate }}</p>
+					<p>{{ activity.publishdate|date:'Y年m月d日' }}</p>
 				</tr>
 			{% else %}
 				{% if isAdmin %}
@@ -26,7 +26,7 @@
 					{% if has_right %}
 						<div><a class="btn btn-primary" id="openDialog">人员审核</a></div>
 						<div><a class="btn btn-primary" href="/philosopher/activity/edit/{{ activity.id }}">编辑</a></div>
-						<div><a class="btn btn-danger" href="/philosopher/activity/delete/{{ activity.id }}">Delete</a></div>
+						<div><a class="btn btn-danger" href="/philosopher/activity/delete/{{ activity.id }}">删除</a></div>
 					{% elif  isStudent %}
 						<div><a class="btn btn-primary" id="openDialog">申请加入</a></div>
 					{% endif %}
@@ -45,7 +45,7 @@
 					<td> {{ activity.atorganizer  }}</td>
 				</tr>
 				<tr>
-					<td>活动名称：</td>
+					<td>活动内容：</td>
 					<td>{{ activity.atcontent|linebreaks }}</td>
 				</tr>
 				<tr>
@@ -58,25 +58,25 @@
 				</tr>
 				<tr>
 					<td>申请开始时间:</td>
-					<td> {{ activity.applystart }}</td>
+					<td> {{ activity.applystart|date:'Y年m月d日' }}</td>
 				</tr>
 				<tr>
 					<td>申请结束时间: </td>
-					<td>{{ activity.applyend }}</td>
+					<td>{{ activity.applyend|date:'Y年m月d日' }}</td>
 				</tr>
 				<tr>
 					<td>活动开始时间: </td>
-					<td>{{ activity.doingstart }}</td>
+					<td>{{ activity.doingstart|date:'Y年m月d日' }}</td>
 				</tr>
 				<tr>
 					<td>活动结束时间 : </td>
-					<td>{{ activity.doingend  }}</td>
+					<td>{{ activity.doingend|date:'Y年m月d日'}}</td>
 				</tr>
 				<tr>
 					<td>备注：</td><td> {{ activity.feedback }}</td>
 				</tr>
 				<tr>
-					<td>创建时间： </td><td>{{ activity.createdate }}</td>
+					<td>创建时间： </td><td>{{ activity.createdate|date:'Y年m月d日'}}</td>
 				</tr>
 				</tbody>
 			</table>
