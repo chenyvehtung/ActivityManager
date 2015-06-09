@@ -46,7 +46,7 @@
 			</table>
 		</div>
 		<div class="user-image col-md-2">
-			<img src="{{ nowuserprofile.getAvatar }}" alt="{{ nowuser.username }}"/>
+			<img src="{{ nowuserprofile.getAvatar }}" alt="{{ nowuser.username }}" title="{{ nowuser.username }}" />
 			{% if has_right %}
 				<a href="/philosopher/accounts/editinfo/{{ nowuser.id }}" class="btn btn-primary">修改个人信息</a>
 			{% endif %}

@@ -88,6 +88,9 @@ body .navbar{
 			position:relative;
 			left:10px;
 			top:10px;
+			.user-avatar{
+				border-radius: 100%;
+			}
 		}
 		a{
 			text-decoration: none;

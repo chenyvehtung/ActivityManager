@@ -38,7 +38,8 @@
 						{% if isAdmin %}
 							<a class="btn btn-warning" href="/philosopher/activity/examlist">待审批</a>
 						{% endif %}
-							<span>你好,<a class="btn " href="/philosopher/accounts/info/{{ user.id }}">{{ user.username }}</a></span>
+							
+							<span><a class="btn " href="/philosopher/accounts/info/{{ user.id }}"><img id="user-avatar" src="{{ user.userprofile.getAvatar }}" alt="{{ user.username }}" title="{{ user.username }}"/>{{ user.username }}</a></span>
 							<span><a class="btn " href="/accounts/logout/">退出登录</a></span>
 						</div>
 					{% else %}

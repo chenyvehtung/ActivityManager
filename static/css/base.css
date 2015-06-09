@@ -71,6 +71,12 @@ body .navbar {
   position: relative;
   left: 10px;
   top: 10px; }
+  #basePage #user-avatar{
+        border-radius: 100%;
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+      }
 #basePage a {
   text-decoration: none; }
 #basePage .login-info {
@@ -98,7 +104,7 @@ body .navbar {
   height: 25px; }
 #baseinfoPage .user-image img {
   margin-bottom: 15px;
-  width: 100px;
+  width: 109px;
   height: auto; }
 #baseinfoPage #adminInfoPage td a {
   float: right;
