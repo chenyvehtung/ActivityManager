@@ -38,7 +38,7 @@
 						{% if isAdmin %}
 							<a class="btn btn-warning" href="/philosopher/activity/examlist">待审批</a>
 						{% endif %}
-							
+
 							<span><a class="btn " href="/philosopher/accounts/info/{{ user.id }}"><img id="user-avatar" src="{{ user.userprofile.getAvatar }}" alt="{{ user.username }}" title="{{ user.username }}"/>{{ user.username }}</a></span>
 							<span><a class="btn " href="/accounts/logout/">退出登录</a></span>
 						</div>
@@ -63,20 +63,20 @@
 			<div class="col-md-4">
 				<div class="rightContent">
 
-<div>
-	<form action="/philosopher/activity/search/" method="get" class="form-inline">
-		<div class="form-group">
-			<input type="text" name="q" size="20" value="" class="form-control" placeholder="输入活动名称或创建者"/>
-		</div>
-		<div class="form-group">
-			<input type="submit" value="搜索" class="form-control"/>
-		</div>
-	</form>
-</div>
+			<div class="search">
+				<form action="/philosopher/activity/search/" method="get" class="form-inline">
+					<div class="form-group">
+						<input type="text" name="q" value="" class="form-control" placeholder="输入活动名称或创建者"/>
+					</div>
+					<div class="form-group">
+						<input type="submit" value="搜索" class="form-control"/>
+					</div>
+				</form>
+			</div>
 
 					<div class="about_us">
 						<img src="{% static 'image/Mine.png'%}">
-						<p>搞活动？当然，请你做好不被付钱而被暴菊花的命运。总而言之，想要我的宝藏吗？那就来伟大航路吧！</p>
+						<p>Philosopher是一个公益活动发布、申请以及管理的平台。为您提供最新最全的公益活动资讯，是你结识更多热心小伙伴、获取更多公益时的最佳选择。</p>
 						<div class="clear"></div>
 					</div>
 					<div class="rank">
@@ -94,5 +94,13 @@
 			</div>
 		</div>
 	</div>
+<div class="footer">
+	<div>
+		© Copyright 2015
+	</div>
+	<div>
+		Thanks for our great leader <b>Chen Yong rui</b> for his picture.
+	</div>
+</div>
 </body>
 </html>
