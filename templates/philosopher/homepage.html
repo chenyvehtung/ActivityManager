@@ -31,6 +31,9 @@
 
 	<div>
 		{% ifnotequal activities.paginator.num_pages 1 %}
+			{% if activities.has_previous %}
+  			<a href="?page={{ activities.previous_page_number }}&q={{ queryValue }}">上一页</a>
+  			{% endif %}
 			{% for page_number in activities.paginator.page_range %}
 				{% ifequal page_number activities.number %}
 					{{ page_number }}
@@ -38,6 +41,9 @@
 					<a href="?page={{ page_number }}&q={{ queryValue }}">{{ page_number }}</a>
 				{% endifequal %}
 			{% endfor %}
+			{% if activities.has_next %}
+  			<a href="?page={{ activities.next_page_number }}&q={{ queryValue }}">下一页</a>
+			{% endif %}
 		{% endifnotequal %}
 	</div>
 </div>
