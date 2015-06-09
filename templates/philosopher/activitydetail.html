@@ -4,7 +4,7 @@
 <script type="text/javascript" src="/../../../static/js/activitydetail.js"></script>
 <div id="activityDetailPage">
 	<div>
-		<div class="left-board">
+		<div class="left-board" align="center">
 			<table>
 			<tbody>
 			{% if activity.publishdate %}
@@ -41,7 +41,7 @@
 			<table class="table table-hover table-border">
 				<tbody>
 				<tr>
-					<td>发布者：</td>
+					<td width="130">发布者：</td>
 					<td> {{ activity.atorganizer  }}</td>
 				</tr>
 				<tr>
@@ -87,34 +87,44 @@
 	{% if activity.publishdate %}
 		{% if has_right %}
 			<div>
-				<p>等待队列</p>
-				{% for application in waitApplications %}
-				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
-				{% endfor %}
+				<h5 id="waiting">等待队列（共{{ waitApplications|length }}人）<div class="hint_pic_down"></div></p>
+				<div class="waiting-list">
+					{% for application in waitApplications %}
+					<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
+					{% endfor %}
+				</div>
 			</div>
 			<div>
-				<p>通过队列</p>
+				<h5 id="accept">通过队列（共{{ passApplications|length }}人）<div class="hint_pic_down"></div></h5>
+				<div class="accept-list">
 				{% for application in passApplications %}
 				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
 				{% endfor %}
+				</div>
 			</div>
 			<div>
-				<p>拒绝队列</p>
+				<h5 id="reject">拒绝队列（共{{ rejectApplications|length }}人）<div class="hint_pic_down"></div></h5>
+				<div class="reject-list">
 				{% for application in rejectApplications %}
 				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
 				{% endfor %}
+				</div>
 			</div>
 			<div>
-				<p>完成队列</p>
+				<h5 id="finish">完成队列（共{{ finishApplications|length }}人）<div class="hint_pic_down"></div></h5>
+				<div class="finish-list">
 				{% for application in finishApplications %}
 				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
 				{% endfor %}
+				</div>
 			</div>
 			<div>
-				<p> 没完成队列</p>
+				<h5 id="unfinish"> 没完成队列（共{{ failApplications|length }}人）<div class="hint_pic_down"></div></h5>
+				<div class="unfinish-list">
 				{% for application in failApplications %}
 				<p><a href="/philosopher/application/detail/{{ application.id }}">{{ application.student.userprofile.schoolID }}@{{ application.student.username }}</a></p>
 				{% endfor %}
+				</div>
 			</div>
 		{% endif %}
 		{% if user.is_authenticated %}
@@ -160,14 +170,14 @@
 					</div>
 					<div>
 				 	<label for="applyreason" >申请原因</label>
-				 	<input type="text" name="applyreason" placeholder="请填入申请原因或其他补充信息" class="form-control"/>
+				 	<textarea rows="4" type="text" name="applyreason" placeholder="请填入申请原因或其他补充信息" class="form-control"></textarea>
 				 	</div>
 				 	</div>
-				 	<input name="submit" type="submit" value="提交评论" class="form-control"/>
+				 	<input name="submit" type="submit" value="提交申请" class="form-control"/>
 				 </form>
 				 {% endif %}
 			{% else %}
-				<p>对不起，你不是学生，无法参加</p>
+				<p class="font-orange">对不起，你不是学生，无法参加</p>
 			{% endif %}
 		{% endif %}
 

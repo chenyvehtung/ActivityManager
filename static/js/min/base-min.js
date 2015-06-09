@@ -1,1 +1,1 @@
-$(function(){$("input").addClass("form-control"),$("textarea").addClass("form-control"),$("form table").css("width","100%")});
+$(function(){$("input").addClass("form-control"),$("textarea").addClass("form-control"),$("form table").css("width","100%"),$(".toTop").click(function(o){$("body,html").animate({scrollTop:0},500)}),$(".toTop").hide(),$(window).scroll(function(o){$(window).scrollTop()>100?$(".toTop").fadeIn(1e3):$(".toTop").fadeOut(1e3)})});

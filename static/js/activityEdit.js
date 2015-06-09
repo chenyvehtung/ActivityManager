@@ -6,6 +6,7 @@ $(function(){
 
 	//给所有Input标签都加上form-control类
 	$("input").addClass("form-control");
+	$("[type='file']").removeClass("form-control");
 	$("textarea").addClass("form-control");
 
 	//给表单添加验证功能

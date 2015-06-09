@@ -79,6 +79,38 @@ body .navbar {
   color: #969696;
   text-align: center; }
 
+.toTop {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  font-size: 2.5em;
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  padding-top: 10px; }
+
+.toTop:hover {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.hint_pic_down {
+  float: right;
+  background-image: url(../image/carat-d-black.png);
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px; }
+
+.hint_pic_up {
+  float: right;
+  background-image: url(../image/carat-u-black.png);
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px; }
+
+.font-orange {
+  color: orange; }
+
 #basePage img {
   width: auto;
   height: 65px; }
@@ -120,18 +152,6 @@ body .navbar {
 #adminInfoPage .row .col-md-12 {
   border-bottom: 1px dotted grey; }
 
-#baseinfoPage h5 .hint_pic_down {
-  float: right;
-  background-image: url(../image/carat-d-black.png);
-  background-repeat: no-repeat;
-  width: 25px;
-  height: 25px; }
-#baseinfoPage h5 .hint_pic_up {
-  float: right;
-  background-image: url(../image/carat-u-black.png);
-  background-repeat: no-repeat;
-  width: 25px;
-  height: 25px; }
 #baseinfoPage .user-image img {
   margin-bottom: 15px;
   width: 100px;
@@ -145,6 +165,9 @@ body .navbar {
   overflow-x: hidden; }
   #activityDetailPage .activityContent img {
     width: 100%; }
+
+#queneDialog a:hover {
+  color: darkblue; }
 
 .em06 {
   font-size: 0.6em; }
@@ -183,8 +206,8 @@ body .navbar {
 @media screen {
   .left-board {
     border: 1px solid #c6e0ed;
-    border-radius: 20px;
-    background-color: #d2ebe5;
+    border-radius: 10px;
+    background-color: #e7e7e7;
     width: 10%;
     position: fixed;
     top: 30%;
@@ -196,8 +219,8 @@ body .navbar {
 @media screen and (max-width: 1000px) {
   .left-board {
     border: 1px solid #c6e0ed;
-    border-radius: 20px;
-    background-color: #d2ebe5;
+    border-radius: 10px;
+    background-color: #e7e7e7;
     width: 100%;
     position: relative;
     left: 30px;
