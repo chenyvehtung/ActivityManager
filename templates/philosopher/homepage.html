@@ -2,7 +2,12 @@
 
 {% block content %}
 <div id="homepagePage">
-		{% for activity in activities %}
+	{% ifequal activities.paginator.count 0 %}
+	<div>
+		对不起，找不到您想要的信息！
+	</div>
+	{% else %}
+		{% for activity in activities.object_list %}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="activityContent">
@@ -22,5 +27,18 @@
 	</div>
 	<hr>
 		{% endfor %}
+	{% endifequal %}
+
+	<div>
+		{% ifnotequal activities.paginator.num_pages 1 %}
+			{% for page_number in activities.paginator.page_range %}
+				{% ifequal page_number activities.number %}
+					{{ page_number }}
+				{% else %}
+					<a href="?page={{ page_number }}&q={{ queryValue }}">{{ page_number }}</a>
+				{% endifequal %}
+			{% endfor %}
+		{% endifnotequal %}
+	</div>
 </div>
 {% endblock content %}

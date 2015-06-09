@@ -27,7 +27,7 @@
 						<div><a class="btn btn-primary" id="openDialog">人员审核</a></div>
 						<div><a class="btn btn-primary" href="/philosopher/activity/edit/{{ activity.id }}">编辑</a></div>
 						<div><a class="btn btn-danger" href="/philosopher/activity/delete/{{ activity.id }}">Delete</a></div>
-					{% else %}
+					{% elif  isStudent %}
 						<div><a class="btn btn-primary" id="openDialog">申请加入</a></div>
 					{% endif %}
 				</div>
