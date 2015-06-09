@@ -29,7 +29,7 @@
 		{% endfor %}
 	{% endifequal %}
 
-	<div>
+	<div align="center" style="font-size:1.5em;">
 		{% ifnotequal activities.paginator.num_pages 1 %}
 			{% if activities.has_previous %}
   			<a href="?page={{ activities.previous_page_number }}&q={{ queryValue }}">上一页</a>

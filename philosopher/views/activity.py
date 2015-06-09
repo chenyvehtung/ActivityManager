@@ -19,7 +19,7 @@ from django.core.paginator import EmptyPage
 from django.core.paginator import PageNotAnInteger
 
 def Homepage(request):
-	limit = 2
+	limit = 6
 	isOrganizer = False
 	isAdmin = False
 	if request.user.is_anonymous() == False: 
@@ -39,7 +39,7 @@ def Homepage(request):
 		context_instance = RequestContext(request) )
 
 def SearchActivity(request):
-	limit = 2
+	limit = 6
 	isOrganizer = False
 	isAdmin = False
 	if request.user.is_anonymous() == False: 
