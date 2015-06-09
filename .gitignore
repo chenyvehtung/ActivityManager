@@ -14,3 +14,17 @@ __pycache__
 .DS_Store
 static/image/mine.png
 templates/philosopher/.DS_Store
+ActivityManager/__init__.pyc
+ActivityManager/settings.pyc
+ActivityManager/urls.pyc
+ActivityManager/wsgi.pyc
+philosopher/__init__.pyc
+philosopher/admin.pyc
+philosopher/context_processors.pyc
+philosopher/forms.pyc
+philosopher/models.pyc
+philosopher/views/__init__.pyc
+philosopher/views/activity.pyc
+philosopher/views/application.pyc
+philosopher/views/function.pyc
+philosopher/views/user.pyc
