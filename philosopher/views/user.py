@@ -29,7 +29,7 @@ def Signup(request):
 			userprofile.save()
 			if user.is_active and userprofile.status == 'n':
 				login(request, user)
-			return redirect('/philosopher/')
+			return redirect('/')
 	else:
 		uf = UserForm(prefix='user')
 		upf = UserProfileForm(prefix='userprofile')
