@@ -109,9 +109,17 @@ def AddActivity(request):
 @login_required
 @user_passes_test(is_admin)
 def ActivityExamList(request):
+	limit = 6
 	activities = Activity.objects.filter(atstatus = 2)
-	newTen = Activity.objects.filter(publishdate__isnull = False).filter(atstatus=0).order_by('-publishdate')[:9]
-	return render_to_response('templates/philosopher/homepage.html', {'activities': activities, "newTen":newTen},
+	paginator = Paginator(activities, limit)
+	page = request.GET.get('page')
+	try:
+		activities = paginator.page(page)
+	except PageNotAnInteger:
+		activities = paginator.page(1)
+	except EmptyPage:
+		activities = paginator.page(paginator.num_pages)
+	return render_to_response('templates/philosopher/homepage.html', {'activities': activities, },
 		context_instance = RequestContext(request) )
 
 @login_required
