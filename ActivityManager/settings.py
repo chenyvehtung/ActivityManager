@@ -173,5 +173,3 @@ LOGGING = {
 
 AUTH_PROFILE_MODULE = 'philosopher.UserProfile'
 
-
-
