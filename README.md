@@ -1,3 +1,13 @@
+##相关文档介绍
+
+课程所有的要求的文档都在Documents文件夹中，包括：
+
+* 部署文档
+* 软件设计文档(包含网站测试报告)
+* 软件用户手册
+* 需求规格说明书
+* 小组分组与贡献率说明
+
 ##代码简介:   
 
 本系统采用Django1.4和Bootstrap进行开发，数据库采用SQlite，并架设在<a href="https://www.heroku.com" target="_blank">Heroku</a>云平台上，欢迎访问<a href="https://activitymanager.herokuapp.com" target="_blank">https://activitymanager.herokuapp.com</a>。    
